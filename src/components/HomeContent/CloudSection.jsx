@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import useFetch from "./useFetch";
 import Linka from "../extras/Linka";
 import CloudCard from "./Cloud/CloudCard";
 
@@ -60,6 +61,10 @@ const CloudServicesList = [
 ];
 
 const CloudSection = () => {
+  const [ data, loading ] = useFetch("https://randomuser.me/api/");
+  
+  // console.log(typeof(myArray), myArray);
+
   return (
     <div>
       <div className="container mx-auto">
@@ -86,6 +91,14 @@ const CloudSection = () => {
               linktext={clouditem.linktext}
             />
           ))}
+          {/* Probando Conexion a una api gratis de generacion de usuarios random */}
+            {/* <h5>Api List</h5>
+            {
+              loading? <p>Cargando...</p>:
+              data && Array.isArray(data.results) && data.results.length > 0 
+              ?data.results.map((user)=> <li>{user.name.first}</li>)
+              :(<p>No data to display</p>)
+            } */}
         </div>
       </div>
     </div>
